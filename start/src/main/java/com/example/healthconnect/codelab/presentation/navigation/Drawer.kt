@@ -59,6 +59,7 @@ fun Drawer(
     scaffoldState: ScaffoldState,
     navController: NavController,
 ) {
+
   val navBackStackEntry by navController.currentBackStackEntryAsState()
   val currentRoute = navBackStackEntry?.destination?.route
   val activity = LocalContext.current
@@ -114,6 +115,7 @@ fun Drawer(
             scaffoldState.drawerState.close()
           }
         }
+
       )
     }
     Spacer(modifier = Modifier.height(16.dp))

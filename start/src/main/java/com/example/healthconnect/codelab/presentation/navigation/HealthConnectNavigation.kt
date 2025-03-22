@@ -41,6 +41,14 @@ import com.example.healthconnect.codelab.presentation.screen.inputreadings.Input
 import com.example.healthconnect.codelab.presentation.screen.inputreadings.InputReadingsViewModelFactory
 import com.example.healthconnect.codelab.presentation.screen.privacypolicy.PrivacyPolicyScreen
 import com.example.healthconnect.codelab.showExceptionSnackbar
+import com.example.healthconnect.codelab.presentation.screen.heartrate.HeartRateScreen
+import com.example.healthconnect.codelab.presentation.screen.heartrate.HeartRateViewModel
+import com.example.healthconnect.codelab.presentation.screen.heartrate.HeartRateViewModelFactory
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.LaunchedEffect
+
+
+
 
 /**
  * Provides the navigation in the app.
@@ -225,6 +233,27 @@ fun HealthConnectNavigation(
         },
         onPermissionsLaunch = { values ->
           permissionsLauncher.launch(values)}
+      )
+    }
+    // 在 NavHost 中添加
+    composable(Screen.HeartRate.route) {
+      val viewModel: HeartRateViewModel = viewModel(
+        factory = HeartRateViewModelFactory(healthConnectManager)
+      )
+
+      // 透過collectAsState獲取HeartRateViewModel中的Flow狀態
+      val heartRateData by viewModel.heartRateData.collectAsState()
+      val uiState by viewModel.uiState.collectAsState()
+
+      // 呼叫資料載入函式
+      LaunchedEffect(Unit) {
+        viewModel.loadHeartRateData()
+      }
+
+      HeartRateScreen(
+        healthConnectManager = healthConnectManager,
+        //heartRateData = heartRateData,
+        //uiState = uiState
       )
     }
   }
