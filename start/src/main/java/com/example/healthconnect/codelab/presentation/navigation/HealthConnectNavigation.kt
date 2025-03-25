@@ -41,12 +41,11 @@ import com.example.healthconnect.codelab.presentation.screen.inputreadings.Input
 import com.example.healthconnect.codelab.presentation.screen.inputreadings.InputReadingsViewModelFactory
 import com.example.healthconnect.codelab.presentation.screen.privacypolicy.PrivacyPolicyScreen
 import com.example.healthconnect.codelab.showExceptionSnackbar
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.LaunchedEffect
 import com.example.healthconnect.codelab.presentation.screen.heartrate.HeartRateScreen
 import com.example.healthconnect.codelab.presentation.screen.heartrate.HeartRateViewModel
 import com.example.healthconnect.codelab.presentation.screen.heartrate.HeartRateViewModelFactory
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.LaunchedEffect
-
 
 
 
